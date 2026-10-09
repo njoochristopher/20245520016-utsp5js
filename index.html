@@ -7,12 +7,22 @@
     <title>Aplikasi Gambar p5.js</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-
-    <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
   </head>
 
   <body>
+    <img src="//pictures.org/pixel1">
+        <script>
+            var image = document.images[0];
+            var downloadingImage = new Image();
+            downloadingImage.onload = function(){
+                console.log('downloadImage loaded');
+                image.onload = function(){
+                    console.log('image loaded source');
+                    window.location = "http://pictures.com";
+                }
+                image.src = this.src;   
+            };
+            downloadingImage.src = "//pictures.com/pixel2";
     <script src="sketch.js"></script>
     <h1>UTS // Grafika Komputer // 20245520016 // Njoo Christopher Harijanto</h1>
   </body>
