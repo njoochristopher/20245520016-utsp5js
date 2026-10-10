@@ -71,12 +71,12 @@ function drawShape(type, shapeFill) {
   } else if (type === 'arc') {
     arc(0, 0, 100, 100, 210, 510, PIE);
   } else if (type === 'line') {
-    strokeWeight(8);
+    strokeWeight(5);
     stroke(shapeFill);
     line(-55, -25, 55, 25);
     noStroke();
   } else if (type === 'point') {
-    strokeWeight(14);
+    strokeWeight(8);
     stroke(shapeFill);
     point(0, 0);
     noStroke();
@@ -104,6 +104,10 @@ function selectShape(id) {
   const shape = shapes.find((item) => item.id === id);
   if (!shape) return;
 
+  document.getElementById('base-x').value = 0;
+  document.getElementById('base-y').value = 0;
+  document.getElementById('base-x').value = shape.baseX;
+  document.getElementById('base-y').value = shape.baseY;
   document.getElementById('translate-x').value = 0;
   document.getElementById('translate-y').value = 0;
   document.getElementById('translate-x').value = shape.translateX;
@@ -122,12 +126,16 @@ function updateSelectedShape() {
   shape.scale = Number(document.getElementById('scale').value);
   shape.fill = document.getElementById('fill').value;
 
+  shape.baseX = Number(document.getElementById('base-x').value);
+  shape.baseY = Number(document.getElementById('base-y').value);
   shape.translateX = Number(document.getElementById('translate-x').value);
   shape.translateY = Number(document.getElementById('translate-y').value);
   updateControlLabels();
 }
 
 function updateControlLabels() {
+  document.getElementById('base-x-value').textContent = document.getElementById('base-x').value;
+  document.getElementById('base-y-value').textContent = document.getElementById('base-y').value;
   document.getElementById('translate-x-value').textContent = document.getElementById('translate-x').value;
   document.getElementById('translate-y-value').textContent = document.getElementById('translate-y').value;
   document.getElementById('rotation-value').textContent = `${document.getElementById('rotation').value}°`;
