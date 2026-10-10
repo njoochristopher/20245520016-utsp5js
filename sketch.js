@@ -1,19 +1,17 @@
-document.getElementById("id1").src = "Path/of/image";
+const img = new Image();
 
-var image = document.images[0];
-var downloadingImage = new Image();
-downloadingImage.onload = function(){
+img.onload(){
 
 }
 
 function setup() {
-  createCanvas(1590, 899);
+  createCanvas(1600, 800);
   noStroke();
   angleMode(DEGREES);
-  loadImagesSource();
+  loadImageSource();
 }
 
-class shape(){
+class shapes (){
     circle;
     ellipse;
     arc;
@@ -118,4 +116,10 @@ function keyPressed(){
 
 function loadImagesSource(){
     
+}
+
+function updateShapes(obj){
+    obj.shapes = "Circle";
+    obj = null;
+    console.log(shapes, circle);
 }
